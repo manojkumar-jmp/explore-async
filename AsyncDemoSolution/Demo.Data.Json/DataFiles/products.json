@@ -1,0 +1,52 @@
+[
+    {
+        "Id": 1,
+        "Name": "Coffee",
+        "price": 2.50
+    },
+    {
+        "Id": 2,
+        "Name": "Sanwich",
+        "price": 4.95
+    },
+    {
+        "Id": 3,
+        "Name": "Donut",
+        "price": 1.75
+    },
+    {
+        "Id": 4,
+        "Name": "Bagel",
+        "price": 2.25
+    },
+    {
+        "Id": 5,
+        "Name": "Fresh Juice",
+        "price": 3.75
+    },
+    {
+        "Id": 6,
+        "Name": "Piza Slice",
+        "price": 3.75
+    },
+    {
+        "Id": 7,
+        "Name": "Salade",
+        "price": 1.50
+    },
+    {
+        "Id": 8,
+        "Name": "Bottled Water",
+        "price": 3.75
+    },
+    {
+        "Id": 9,
+        "Name": "Cookie",
+        "price": 1.25
+    },
+    {
+        "Id": 10,
+        "Name": "Hot Chololate Juice",
+        "price": 2.75
+    }
+]
