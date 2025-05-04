@@ -1,5 +1,7 @@
 # Multithreading, Asynchronous, and Parallel Programming in C#
 
+Welcome to this tutorial series on Multithreading, Asynchronous, and Parallel Programming using C#. I'm Manoj, and in this series, we'll break down advanced programming techniques that help you build responsive, scalable, and high-performance applications.
+
 ## [Module 1: Fundamentals of Concurrency](MODULE-1.md)
 
 ## [Module 2: Multithreading in Depth](MODULE-2.md)
