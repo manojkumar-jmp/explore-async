@@ -1,8 +1,8 @@
 # Multithreading, Asynchronous, and Parallel Programming in C#
 
-## [Module 1: Fundamentals of Concurrency](/MODULE-1.md)
+## [Module 1: Fundamentals of Concurrency](MODULE-1.md)
 
-## [Module 2: Multithreading in Depth](/MODULE-2.md)
+## [Module 2: Multithreading in Depth](MODULE-2.md)
 
 ## [Module 3: Asynchronous Programming (Async/Await)](docs/MODULE-3.md)
 
