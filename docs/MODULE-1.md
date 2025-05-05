@@ -1,14 +1,21 @@
-# Module 1: Fundamentals of Concurrency
+# Module 1: Foundation 
 
-## 1. Introduction to Concurrency and Parallelism
+## 1. Introduction to Multithreading
+- ### What is a Thread?
+- ### What is Multithreading?
+- ### Why Do We Need Multithreading?
+- ### Common Challenges in Multithreading
+- ### Real-World Examples
+
+## 2. Introduction to Concurrency and Parallelism
 - ### Why use multithreading, async, and parallel programming?
 - ### CPU-bound vs I/O-bound tasks
 - ### Common pitfalls: deadlocks, race conditions, etc.
-## 2. Asynchronous Programming Models in .NET
+## 3. Asynchronous Programming Models in .NET
 - ### APM – Asynchronous Programming Model
 - ### EAP – Event-based Asynchronous Pattern
 - ### TAP – Task-based Asynchronous Pattern
-## [3. Threading Basics](#Threading-Basics)
+## [4. Threading Basics](#Threading-Basics)
 - ### Thread class and manual thread creation
 - ### Thread lifecycle, naming, joining, sleeping
 - ### Thread safety and shared data access
