@@ -1,6 +1,6 @@
 # Module 1: Fundamentals of Concurrency
 
-## 1. Introduction to Concurrency in .NET
+## 1. Introduction to Concurrency and Parallelism
 - ### Why use multithreading, async, and parallel programming?
 - ### CPU-bound vs I/O-bound tasks
 - ### Common pitfalls: deadlocks, race conditions, etc.
