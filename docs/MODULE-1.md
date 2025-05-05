@@ -4,7 +4,11 @@
 - ### Why use multithreading, async, and parallel programming?
 - ### CPU-bound vs I/O-bound tasks
 - ### Common pitfalls: deadlocks, race conditions, etc.
-## [2. Threading Basics](#Threading-Basics)
+## 2. Asynchronous Programming Models in .NET
+- ### APM – Asynchronous Programming Model
+- ### EAP – Event-based Asynchronous Pattern
+- ### TAP – Task-based Asynchronous Pattern
+## [3. Threading Basics](#Threading-Basics)
 - ### Thread class and manual thread creation
 - ### Thread lifecycle, naming, joining, sleeping
 - ### Thread safety and shared data access
