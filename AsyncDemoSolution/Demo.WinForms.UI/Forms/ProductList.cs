@@ -26,7 +26,6 @@ namespace Demo.WinForms.UI.Forms
         private void btnLoadProducts_Click(object sender, EventArgs e)
         {
             dataGridViewProducts.DataSource = _productService.GetAllProducts();
-
         }
     }
 }
