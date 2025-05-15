@@ -6,6 +6,7 @@
 ## 2. Tasks and Task<T>
 - ### Creating and running tasks
 - ### Understanding the task lifecycle
+- ### Task states (Created, Running, Completed, Canceled, Faulted)
 - ### Task cancellation, continuation, and exception handling
 ## 3. Synchronization Primitives
 - ### lock, Monitor, Mutex, Semaphore, AutoResetEvent, etc.
