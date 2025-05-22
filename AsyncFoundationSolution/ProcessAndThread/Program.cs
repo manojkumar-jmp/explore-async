@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Runtime.InteropServices;
+using System.Runtime.ConstrainedExecution;
 
 namespace ProcessAndThread
 {
@@ -12,16 +14,40 @@ namespace ProcessAndThread
     {
         static void Main(string[] args)
         {
+            //By default, the main thread’s Name property is null unless you explicitly set it.
+            //•	The Name property can only be set once per thread.
+            Thread.CurrentThread.Name = "MainThread";
+            //Thread.CurrentThread.Name = "MainThread-1";
+            // 1 LaunchAndCheckProcess();
+            // 2 CheckThreads();
+            // 3 ThreadingBasics.StartThreadWithNamedMethod();
+            // 4 ThreadingBasics.StartThreadWithLamdada();
+            // 5 ThreadingBasics.StartThreadWithParameter();
+
+
+            Console.WriteLine($"Thread Name: {Thread.CurrentThread.Name} Press any key to exit");
+            Console.ReadKey();
+        }
+
+        static void LaunchAndCheckProcess()
+        {
             // Get current process id
             Process currentProcess = Process.GetCurrentProcess();
             Console.WriteLine($"Main process ID:{currentProcess.Id}");
             // Start new process to Notepad
-            Process notepadProcess = Process.Start("notepad.exe");
+            Process notepadProcess = Process.Start("notepad.exe");            
+            Console.WriteLine($"Notepad process ID:{notepadProcess.Id}");           
+        }
+
+        static void CheckThreads()
+        {
+            // Get current process id
+            Process currentProcess = Process.GetCurrentProcess();
             ListThreadOfSpecificProcess(currentProcess.Id);
-            Console.WriteLine($"Notepad process ID:{notepadProcess.Id}");
+
+            // Start new process to Notepad
+            Process notepadProcess = Process.Start("notepad.exe");
             ListThreadOfSpecificProcess(notepadProcess.Id);
-            Console.WriteLine("Press any key to exit");
-            Console.ReadKey();
         }
 
         static void ListThreadOfSpecificProcess(int processId)
@@ -33,10 +59,9 @@ namespace ProcessAndThread
                 Console.WriteLine("Thread in current process");
                 foreach (ProcessThread thread in process.Threads)
                 {
-                    Console.WriteLine($"Thread ID: {thread.Id} Name {Thread.CurrentThread.Name} State: {thread.ThreadState} Priority {thread.PriorityLevel} CPU Time {thread.TotalProcessorTime}");
+                    Console.WriteLine($"Thread ID: {thread.Id} State: {thread.ThreadState} Priority {thread.PriorityLevel} CPU Time {thread.TotalProcessorTime}");
     
                 }
-
             }
             catch (Exception ex)
             {
