@@ -71,3 +71,16 @@ Moreover, having a solid understanding of threads significantly improves your ab
 
 Finally, many enterprise systems still contain legacy code that uses manual threading constructs such as Thread.Start(), Thread.Sleep(), and Thread.Join(). If you're ever tasked with maintaining or migrating such applications, you'll need to understand how these raw threads work and why they were used. While the manual thread approach is no longer best practice for most modern development, it's still a vital piece of the concurrency puzzle — and a topic every .NET developer should understand.
 
+## Thread lifecycle, naming, joining, sleeping
+
+The thread lifecycle in .NET describes the various states a thread goes through from creation to termination. Here’s a summary of the main states and transitions, with C# context:
+
+| State            | Description                                      | 
+|------------------|--------------------------------------------------| 
+| Unstarted        | Created, not started                             | 
+| Running          | Actively executing code                          | 
+| WaitSleepJoin    | Waiting, sleeping, or joining another thread     | 
+| Stopped          | Finished execution                               |
+
+Suspended (Obsolete, not recommended)
+•	The thread is suspended. (Not used in modern .NET; avoid using Thread.Suspend.)
