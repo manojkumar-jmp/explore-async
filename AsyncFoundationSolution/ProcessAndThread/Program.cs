@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
-using System.Runtime.InteropServices;
-using System.Runtime.ConstrainedExecution;
 
 namespace ProcessAndThread
 {
@@ -23,7 +17,8 @@ namespace ProcessAndThread
             // 3 ThreadingBasics.StartThreadWithNamedMethod();
             // 4 ThreadingBasics.StartThreadWithLamdada();
             // 5 ThreadingBasics.StartThreadWithParameter();
-            ThreadLifecycle.ThreadLifecycleDemo();
+            // 6 ThreadLifecycle.ThreadLifecycleDemo();
+            PrivateStacks.ThreadLocalStacks();
 
             Console.WriteLine($"Thread Name: {Thread.CurrentThread.Name} Press any key to exit");
             Console.ReadKey();
