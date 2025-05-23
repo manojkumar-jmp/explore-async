@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace ProcessAndThread
 {
     internal class ThreadingBasics
-    { 
+    {
         public static void StartThreadWithNamedMethod()
         {
             //A new Thread is created with a method(PrintMessage) as the entry point. thread.Start() begins execution on a new thread.
@@ -52,6 +52,37 @@ namespace ProcessAndThread
             Console.WriteLine($"Number from parameter {number}");
         }
 
+        public static void ForegroundThread()
+        {
+            // Foreground Threads (default)
+            // By default, threadsyou create with new Thread(..) are foreground threads.
+            // The process will not exit until all foreground threads have completed.
+            
+            Thread foregroundThread = new Thread(() =>
+            {
+                Console.WriteLine("Foreground thread is running.");
+                Thread.Sleep(2000);
+                Console.WriteLine("Foreground thread is finishing.");
+            });
+            foregroundThread.Start();
+        }
 
+        public static void BackgroundThread()
+        {
+            // Background Threads
+            // You can create a background thread by setting the IsBackground property to true.
+            // The process will exit as soon as the main thread and all foreground threads finish, even if background threads are still running.
+            // Any unfinished background threads are terminated when the process exits.
+
+            Thread backgroundThread = new Thread(() =>
+            {
+                Console.WriteLine("Background thread is running.");
+                Thread.Sleep(2000);
+                Console.WriteLine("Background thread is finishing.");
+            });
+            backgroundThread.IsBackground = true; // Set the thread as a background thread
+            backgroundThread.Start();
+
+        }
     }
 }
