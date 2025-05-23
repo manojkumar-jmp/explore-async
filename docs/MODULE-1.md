@@ -84,3 +84,21 @@ The thread lifecycle in .NET describes the various states a thread goes through 
 
 Suspended (Obsolete, not recommended)
 •	The thread is suspended. (Not used in modern .NET; avoid using Thread.Suspend.)
+
+## In .NET (and most operating systems), threads within the same process share
+ - The code section (the program’s instructions)
+   - All threads execute code from the same program. For example, multiple threads can call the same method:
+ - The data section (static fields, heap objects)
+   - Threads can access and modify shared data, such as static fields or objects on the heap:
+ - Operating system resources (open files, handles, etc.)
+   - Threads can use the same file handles or other OS resources
+ - However, each thread has its own stack, so local variables are private to each thread.
+   - Each thread has its own private stack, which means that local variables declared inside a method are unique to each thread. They are not shared between threads, so changes made to a local variable in one thread do not affect the same-named variable in another thread.
+ 
+
+| Resource Type         | Shared Between Threads? | Example                       | 
+|-----------------------|------------------------|--------------------------------| 
+| Code Section          | Yes                    | Same method executed           | 
+| Data Section (static) | Yes                    | Static fields, heap objects    | 
+| OS Resources          | Yes                    | File handles, sockets, etc.    | 
+| Stack (locals)        | No (private per thread)| Local variables in methods     |
