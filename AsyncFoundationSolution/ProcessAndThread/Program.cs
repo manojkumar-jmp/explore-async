@@ -23,7 +23,7 @@ namespace ProcessAndThread
             // 3 ThreadingBasics.StartThreadWithNamedMethod();
             // 4 ThreadingBasics.StartThreadWithLamdada();
             // 5 ThreadingBasics.StartThreadWithParameter();
-
+            // 6 ThreadLifecycle.ThreadLifecycleDemo();
 
             Console.WriteLine($"Thread Name: {Thread.CurrentThread.Name} Press any key to exit");
             Console.ReadKey();

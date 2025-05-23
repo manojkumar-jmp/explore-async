@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -37,6 +38,7 @@ namespace ProcessAndThread
         }
         public static void StartThreadWithParameter()
         {
+            //ParameterizedThreadStart allows passing a single object parameter to the thread method. The method must accept an object parameter.
             Thread threadWithParameter = new Thread(PrintNumber);
             threadWithParameter.Start(45);
         }
