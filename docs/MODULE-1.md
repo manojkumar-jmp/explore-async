@@ -102,3 +102,35 @@ Suspended (Obsolete, not recommended)
 | Data Section (static) | Yes                    | Static fields, heap objects    | 
 | OS Resources          | Yes                    | File handles, sockets, etc.    | 
 | Stack (locals)        | No (private per thread)| Local variables in methods     |
+
+### Thread Safety
+
+Thread safety means that shared data is accessed and modified by multiple threads in a way that prevents data corruption or unexpected behavior. When multiple threads access the same variable or object without proper synchronization, you can get race conditions or inconsistent results.
+
+If two threads update a shared variable at the same time, the final value may be unpredictable. This is called a race condition.
+
+#### Synchronization Mechanisms
+
+1. Lock (uses Monitor under the hood)
+   - The lock statement ensures that only one thread can enter the critical section at a time.
+3. Monitor
+   - Provides more control than lock, such as Monitor.Enter, Monitor.Exit, and Monitor.TryEnter.
+   - Allows explicit wait and pulse operations for advanced scenarios.
+3. Mutex
+   - Can synchronize threads across different processes
+   - Useful for inter-process synchronization
+4. Semaphore / SemaphoreSlim
+   - Limits the number of threads that can access a resource or pool of resources concurrently.
+   - SemaphoreSlim is a lightweight, in-process alternative.
+5. ReaderWriterLock / ReaderWriterLockSlim
+   - Allows multiple threads to read shared data simultaneously, but only one thread to write.
+   - ReaderWriterLockSlim is recommended for most scenarios.
+6. AutoResetEvent / ManuakResetEvent
+   - Used for signaling between threads.
+   - One thread can signal another to proceed.
+7. CountdownEvent
+   - Allows threads to wait until a set of operations being performed in other threads completes.
+9. Barrier
+    - Enables multiple threads to work concurrently on an algorithm in phases.
+9. SpinLock / SpinWait
+   - Useful for very short, low-contention critical sections where threads can "spin" instead of sleeping.
