@@ -47,6 +47,9 @@
     <Compile Include="PrivateStacks.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedCodeSection.cs" />
+    <Compile Include="SharedDataSection.cs" />
+    <Compile Include="SharedOSResources.cs" />
     <Compile Include="ThreadingBasics.cs" />
     <Compile Include="ThreadLifecycle.cs" />
   </ItemGroup>

@@ -18,7 +18,10 @@ namespace ProcessAndThread
             // 4 ThreadingBasics.StartThreadWithLamdada();
             // 5 ThreadingBasics.StartThreadWithParameter();
             // 6 ThreadLifecycle.ThreadLifecycleDemo();
-            PrivateStacks.ThreadLocalStacks();
+            // 7 PrivateStacks.ThreadLocalStacks();
+            // 8 SharedCodeSection.SharedCodeDemo();
+            // 9 SharedDataSection.SharedDataDemo();
+            // 10 SharedOSResources.SharedOSResourcesDemo();
 
             Console.WriteLine($"Thread Name: {Thread.CurrentThread.Name} Press any key to exit");
             Console.ReadKey();
