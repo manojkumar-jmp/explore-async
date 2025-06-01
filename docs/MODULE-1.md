@@ -150,6 +150,14 @@ The key to avoiding race conditions is to identify shared resources and ensure t
 
 ##### 5. Thread-local storage
 
+#### Best Practices:
+- Minimize shared state
+- Make shared data immutable when possible
+- Use thread-safe collections
+- Keep critical sections as small as possible
+- Avoid nested locks to prevent deadlocks
+- Use higher-level synchronization when possible (Tasks, async/await)
+
 ### Thread Safety
 
 Thread safety means that shared data is accessed and modified by multiple threads in a way that prevents data corruption or unexpected behavior. When multiple threads access the same variable or object without proper synchronization, you can get race conditions or inconsistent results.
