@@ -84,17 +84,21 @@ Finally, many enterprise systems still contain legacy code that uses manual thre
 <a name="Thread-Class"></a>
 ### Thread Class
 
-> Refer to ThreadingBasics class
+> Refer to ThreadingBasics.StartThreadWithNamedMethod(), ThreadingBasics.StartThreadWithLamdada() and ThreadingBasics.StartThreadWithParameter()
 
 #### In .NET (and most operating systems), threads within the same process share
  - The code section (the program’s instructions)
    - All threads execute code from the same program. For example, multiple threads can call the same method:
+   > Refer to SharedCodeSection.SharedCodeDemo()
  - The data section (static fields, heap objects)
    - Threads can access and modify shared data, such as static fields or objects on the heap:
+   > Refer to SharedDataSection.SharedDataDemo()
  - Operating system resources (open files, handles, etc.)
    - Threads can use the same file handles or other OS resources
+   > Refer to SharedOSResources.SharedOSResourcesDemo()
  - However, each thread has its own stack, so local variables are private to each thread.
    - Each thread has its own private stack, which means that local variables declared inside a method are unique to each thread. They are not shared between threads, so changes made to a local variable in one thread do not affect the same-named variable in another thread.
+   > Refer to PrivateStacks.ThreadLocalStacks() 
 
 | Resource Type         | Shared Between Threads? | Example                       | 
 |-----------------------|------------------------|--------------------------------| 
@@ -106,7 +110,7 @@ Finally, many enterprise systems still contain legacy code that uses manual thre
 <a name="ThreadLifecycle"></a>
 ### Thread lifecycle, naming, joining, sleeping
 
-> Refer to ThreadLifecycle class
+> Refer to ThreadLifecycle.ThreadLifecycleDemo()
 
 The thread lifecycle in .NET describes the various states a thread goes through from creation to termination. Here’s a summary of the main states and transitions, with C# context:
 
@@ -119,8 +123,6 @@ The thread lifecycle in .NET describes the various states a thread goes through 
 
 Suspended (Obsolete, not recommended)
 •	The thread is suspended. (Not used in modern .NET; avoid using Thread.Suspend.)
-
-
 
 ### Thread Safety
 
