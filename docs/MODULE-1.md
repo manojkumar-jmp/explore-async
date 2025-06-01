@@ -129,6 +129,27 @@ A race condition occurs when two or more threads access shared data concurrently
 - Read-Modify-Write: Reading a value, modifying it, and writing it back
 - Initialization Races: Multiple threads trying to initialize the same resource
 
+#### Ways to Prevent Race Conditions:
+The key to avoiding race conditions is to identify shared resources and ensure their access is properly synchronized using appropriate thread-safety mechanisms.
+
+##### 1. Synchronization primitives:
+- lock statement
+- Monitor class
+- Mutex
+- Semaphore
+
+##### 2. Atomic operations:
+- Interlocked class methods
+
+##### 3. Thread-safe collections:
+- ConcurrentDictionary
+- ConcurrentQueue
+- ConcurrentBag
+
+##### 4. Immutable objects
+
+##### 5. Thread-local storage
+
 ### Thread Safety
 
 Thread safety means that shared data is accessed and modified by multiple threads in a way that prevents data corruption or unexpected behavior. When multiple threads access the same variable or object without proper synchronization, you can get race conditions or inconsistent results.
