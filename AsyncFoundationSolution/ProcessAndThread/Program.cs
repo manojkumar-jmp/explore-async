@@ -27,7 +27,10 @@ namespace ProcessAndThread
             // 10 SharedDataSection.SharedDataDemoWithLock();
             // 11 SharedDataSection.SharedDataDemoWithInterlocked();
             // 12 SharedOSResources.SharedOSResourcesDemo();
+            // 13 CheckThenAct.CheckThenActDemo();
+            // 13 InitializationRaces.InitializationRacesDemo();
 
+            InitializationRaces.InitializationRacesDemo();
 
             Console.WriteLine($"Thread Name: {Thread.CurrentThread.Name} Press any key to exit");
             Console.ReadKey();

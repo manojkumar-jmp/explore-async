@@ -24,6 +24,7 @@ namespace ProcessAndThread
         // The relatively small number of iterations
         public static void SharedDataDemo()
         {
+            // Example of  Read-Modify-Write
             Thread t1 = new Thread(() =>
             {
                 for (int i = 0; i < 100000; i++)
