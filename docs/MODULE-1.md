@@ -132,23 +132,42 @@ A race condition occurs when two or more threads access shared data concurrently
 #### Ways to Prevent Race Conditions:
 The key to avoiding race conditions is to identify shared resources and ensure their access is properly synchronized using appropriate thread-safety mechanisms.
 
-##### 1. Synchronization primitives:
-- lock statement
-- Monitor class
-- Mutex
-- Semaphore
+##### A. Synchronization primitives:
+1. Lock (uses Monitor under the hood)
+   - The lock statement ensures that only one thread can enter the critical section at a time.
+3. Monitor
+   - Provides more control than lock, such as Monitor.Enter, Monitor.Exit, and Monitor.TryEnter.
+   - Allows explicit wait and pulse operations for advanced scenarios.
+3. Mutex
+   - Can synchronize threads across different processes
+   - Useful for inter-process synchronization
+4. Semaphore / SemaphoreSlim
+   - Limits the number of threads that can access a resource or pool of resources concurrently.
+   - SemaphoreSlim is a lightweight, in-process alternative.
+5. ReaderWriterLock / ReaderWriterLockSlim
+   - Allows multiple threads to read shared data simultaneously, but only one thread to write.
+   - ReaderWriterLockSlim is recommended for most scenarios.
+6. AutoResetEvent / ManuakResetEvent
+   - Used for signaling between threads.
+   - One thread can signal another to proceed.
+7. CountdownEvent
+   - Allows threads to wait until a set of operations being performed in other threads completes.
+9. Barrier
+    - Enables multiple threads to work concurrently on an algorithm in phases.
+9. SpinLock / SpinWait
+   - Useful for very short, low-contention critical sections where threads can "spin" instead of sleeping.
 
-##### 2. Atomic operations:
+##### B. Atomic operations:
 - Interlocked class methods
 
-##### 3. Thread-safe collections:
+##### C. Thread-safe collections:
 - ConcurrentDictionary
 - ConcurrentQueue
 - ConcurrentBag
 
-##### 4. Immutable objects
+##### D. Immutable objects
 
-##### 5. Thread-local storage
+##### E. Thread-local storage
 
 #### Best Practices:
 - Minimize shared state
