@@ -124,11 +124,10 @@ Some common pitfalls include:
 These are exactly the kinds of problems modern .NET features like Task and async/await are designed to help with — but to understand how, we first need to understand why.
 #### Race conditions
 A race condition occurs when two or more threads access shared data concurrently, and at least one thread modifies the data. The outcome depends on the exact timing and sequence of operations, leading to unpredictable results.
+#### Common Race Condition Patterns
 - Check-Then-Act: Checking a condition and then acting on it non-atomically
 - Read-Modify-Write: Reading a value, modifying it, and writing it back
 - Initialization Races: Multiple threads trying to initialize the same resource
-
-#### Common Race Condition Patterns
 
 ### Thread Safety
 
