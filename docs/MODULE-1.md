@@ -4,7 +4,6 @@
 - ### [What is a Thread?](#What-is-Thread)
 - ### [What is Multithreading?](#What-is-Multithreading)
 - ### [Why Do We Need Multithreading?](#Why-Do-We-Need-Multithreading)
-- ### [Common Challenges in Multithreading](#Common-Challenges-in-Multithreading)
 - ### [Real-World Examples](#Real-World-Examples)
 
 ---
@@ -26,7 +25,7 @@
 ## [4. Threading Basics](#Threading-Basics)
 - ### [Thread class and manual thread creation](#Thread-Class)
 - ### [Thread lifecycle, naming, joining, sleeping](#ThreadLifecycle)
-- ### Thread safety and shared data access
+- ### [Common Challenges in Multithreading](#Common-Challenges-in-Multithreading)
 
 ---
 
@@ -52,17 +51,6 @@ Here are three main reasons:
 - **Responsiveness** – Especially in desktop and mobile apps, long-running operations on the main thread can freeze the UI. Running those tasks on background threads keeps your app responsive.
 - **Performance** – On multi-core CPUs, threads can execute in parallel, making better use of hardware.
 - **Scalability** – Servers can handle more simultaneous requests by running them across multiple threads efficiently.
-
-<a name="Common-Challenges-in-Multithreading"></a>
-### Common Challenges in Multithreading
-While multithreading is powerful, it’s also notoriously tricky.
-Some common pitfalls include:
-- **Race conditions** – two threads accessing the same data at the same time
-- **Deadlocks** – two threads waiting on each other forever
-- **Thread safety** – protecting shared resources from concurrent access
-- **Complex debugging** – bugs may not appear consistently
-
-These are exactly the kinds of problems modern .NET features like Task and async/await are designed to help with — but to understand how, we first need to understand why.
 
 <a name="Real-World-Examples"></a>
 ### Real-World Examples
@@ -123,6 +111,24 @@ The thread lifecycle in .NET describes the various states a thread goes through 
 
 Suspended (Obsolete, not recommended)
 •	The thread is suspended. (Not used in modern .NET; avoid using Thread.Suspend.)
+
+<a name="Common-Challenges-in-Multithreading"></a>
+### Common Challenges in Multithreading
+While multithreading is powerful, it’s also notoriously tricky.
+Some common pitfalls include:
+- **Race conditions** – two threads accessing the same data at the same time
+- **Deadlocks** – two threads waiting on each other forever
+- **Thread safety** – protecting shared resources from concurrent access
+- **Complex debugging** – bugs may not appear consistently
+
+These are exactly the kinds of problems modern .NET features like Task and async/await are designed to help with — but to understand how, we first need to understand why.
+#### Race conditions
+A race condition occurs when two or more threads access shared data concurrently, and at least one thread modifies the data. The outcome depends on the exact timing and sequence of operations, leading to unpredictable results.
+- Check-Then-Act: Checking a condition and then acting on it non-atomically
+- Read-Modify-Write: Reading a value, modifying it, and writing it back
+- Initialization Races: Multiple threads trying to initialize the same resource
+
+#### Common Race Condition Patterns
 
 ### Thread Safety
 
