@@ -7,18 +7,28 @@
 - ### [Common Challenges in Multithreading](#Common-Challenges-in-Multithreading)
 - ### [Real-World Examples](#Real-World-Examples)
 
+---
+
 ## 2. Introduction to Concurrency and Parallelism
 - ### Why use multithreading, async, and parallel programming?
 - ### CPU-bound vs I/O-bound tasks
 - ### Common pitfalls: deadlocks, race conditions, etc.
+
+---
+
 ## 3. Asynchronous Programming Models in .NET
 - ### APM – Asynchronous Programming Model
 - ### EAP – Event-based Asynchronous Pattern
 - ### TAP – Task-based Asynchronous Pattern
+
+---
+
 ## [4. Threading Basics](#Threading-Basics)
-- ### Thread class and manual thread creation
-- ### Thread lifecycle, naming, joining, sleeping
+- ### [Thread class and manual thread creation](#Thread-Class)
+- ### [Thread lifecycle, naming, joining, sleeping](#ThreadLifecycle)
 - ### Thread safety and shared data access
+
+---
 
 ## 1. Introduction to Multithreading
 <a name ="What-is-Thread"></a>
@@ -71,11 +81,32 @@ Moreover, having a solid understanding of threads significantly improves your ab
 
 Finally, many enterprise systems still contain legacy code that uses manual threading constructs such as Thread.Start(), Thread.Sleep(), and Thread.Join(). If you're ever tasked with maintaining or migrating such applications, you'll need to understand how these raw threads work and why they were used. While the manual thread approach is no longer best practice for most modern development, it's still a vital piece of the concurrency puzzle — and a topic every .NET developer should understand.
 
-## Thread Class
+<a name="Thread-Class"></a>
+### Thread Class
 
 > Refer to ThreadingBasics class
 
-## Thread lifecycle, naming, joining, sleeping
+#### In .NET (and most operating systems), threads within the same process share
+ - The code section (the program’s instructions)
+   - All threads execute code from the same program. For example, multiple threads can call the same method:
+ - The data section (static fields, heap objects)
+   - Threads can access and modify shared data, such as static fields or objects on the heap:
+ - Operating system resources (open files, handles, etc.)
+   - Threads can use the same file handles or other OS resources
+ - However, each thread has its own stack, so local variables are private to each thread.
+   - Each thread has its own private stack, which means that local variables declared inside a method are unique to each thread. They are not shared between threads, so changes made to a local variable in one thread do not affect the same-named variable in another thread.
+
+| Resource Type         | Shared Between Threads? | Example                       | 
+|-----------------------|------------------------|--------------------------------| 
+| Code Section          | Yes                    | Same method executed           | 
+| Data Section (static) | Yes                    | Static fields, heap objects    | 
+| OS Resources          | Yes                    | File handles, sockets, etc.    | 
+| Stack (locals)        | No (private per thread)| Local variables in methods     |
+
+<a name="ThreadLifecycle"></a>
+### Thread lifecycle, naming, joining, sleeping
+
+> Refer to ThreadLifecycle class
 
 The thread lifecycle in .NET describes the various states a thread goes through from creation to termination. Here’s a summary of the main states and transitions, with C# context:
 
@@ -89,23 +120,7 @@ The thread lifecycle in .NET describes the various states a thread goes through 
 Suspended (Obsolete, not recommended)
 •	The thread is suspended. (Not used in modern .NET; avoid using Thread.Suspend.)
 
-## In .NET (and most operating systems), threads within the same process share
- - The code section (the program’s instructions)
-   - All threads execute code from the same program. For example, multiple threads can call the same method:
- - The data section (static fields, heap objects)
-   - Threads can access and modify shared data, such as static fields or objects on the heap:
- - Operating system resources (open files, handles, etc.)
-   - Threads can use the same file handles or other OS resources
- - However, each thread has its own stack, so local variables are private to each thread.
-   - Each thread has its own private stack, which means that local variables declared inside a method are unique to each thread. They are not shared between threads, so changes made to a local variable in one thread do not affect the same-named variable in another thread.
- 
 
-| Resource Type         | Shared Between Threads? | Example                       | 
-|-----------------------|------------------------|--------------------------------| 
-| Code Section          | Yes                    | Same method executed           | 
-| Data Section (static) | Yes                    | Static fields, heap objects    | 
-| OS Resources          | Yes                    | File handles, sockets, etc.    | 
-| Stack (locals)        | No (private per thread)| Local variables in methods     |
 
 ### Thread Safety
 
