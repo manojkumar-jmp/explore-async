@@ -25,7 +25,7 @@
 ## [4. Threading Basics](#Threading-Basics)
 - ### [Thread class and manual thread creation](#Thread-Class)
 - ### [Thread lifecycle, naming, joining, sleeping](#ThreadLifecycle)
-- ### [Common Challenges in Multithreading](#Common-Challenges-in-Multithreading)
+- ### [Common Challenges in Multithreading](#CommonChallenges)
 
 ---
 
@@ -112,7 +112,7 @@ The thread lifecycle in .NET describes the various states a thread goes through 
 Suspended (Obsolete, not recommended)
 •	The thread is suspended. (Not used in modern .NET; avoid using Thread.Suspend.)
 
-<a name="Common-Challenges-in-Multithreading"></a>
+<a name="CommonChallenges"></a>
 ### Common Challenges in Multithreading
 While multithreading is powerful, it’s also notoriously tricky.
 Some common pitfalls include:
@@ -126,8 +126,11 @@ These are exactly the kinds of problems modern .NET features like Task and async
 A race condition occurs when two or more threads access shared data concurrently, and at least one thread modifies the data. The outcome depends on the exact timing and sequence of operations, leading to unpredictable results.
 #### Common Race Condition Patterns
 - Check-Then-Act: A thread checks a condition and then acts on it, but the check and the action are not performed atomically. Another thread can change the condition between the check and the act, leading to unexpected behavior.
-- Read-Modify-Write: A thread reads a value, modifies it, and writes it back. If multiple threads do this simultaneously, updates can be lost because the operations are not atomic. 
+  > Refer to CheckThenAct.CheckThenActDemo()
+- Read-Modify-Write: A thread reads a value, modifies it, and writes it back. If multiple threads do this simultaneously, updates can be lost because the operations are not atomic.
+  > SharedDataSection.SharedDataDemo()
 - Initialization Races: Multiple threads try to initialize a shared resource at the same time, possibly resulting in multiple initializations or inconsistent state.
+  > Refer to InitializationRaces.InitializationRacesDemo()
 
 #### Ways to Prevent Race Conditions:
 The key to avoiding race conditions is to identify shared resources and ensure their access is properly synchronized using appropriate thread-safety mechanisms.
@@ -180,31 +183,3 @@ The key to avoiding race conditions is to identify shared resources and ensure t
 ### Thread Safety
 
 Thread safety means that shared data is accessed and modified by multiple threads in a way that prevents data corruption or unexpected behavior. When multiple threads access the same variable or object without proper synchronization, you can get race conditions or inconsistent results.
-
-If two threads update a shared variable at the same time, the final value may be unpredictable. This is called a race condition.
-
-#### Synchronization Mechanisms
-
-1. Lock (uses Monitor under the hood)
-   - The lock statement ensures that only one thread can enter the critical section at a time.
-3. Monitor
-   - Provides more control than lock, such as Monitor.Enter, Monitor.Exit, and Monitor.TryEnter.
-   - Allows explicit wait and pulse operations for advanced scenarios.
-3. Mutex
-   - Can synchronize threads across different processes
-   - Useful for inter-process synchronization
-4. Semaphore / SemaphoreSlim
-   - Limits the number of threads that can access a resource or pool of resources concurrently.
-   - SemaphoreSlim is a lightweight, in-process alternative.
-5. ReaderWriterLock / ReaderWriterLockSlim
-   - Allows multiple threads to read shared data simultaneously, but only one thread to write.
-   - ReaderWriterLockSlim is recommended for most scenarios.
-6. AutoResetEvent / ManuakResetEvent
-   - Used for signaling between threads.
-   - One thread can signal another to proceed.
-7. CountdownEvent
-   - Allows threads to wait until a set of operations being performed in other threads completes.
-9. Barrier
-    - Enables multiple threads to work concurrently on an algorithm in phases.
-9. SpinLock / SpinWait
-   - Useful for very short, low-contention critical sections where threads can "spin" instead of sleeping.
