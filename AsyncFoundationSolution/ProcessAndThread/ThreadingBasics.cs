@@ -7,10 +7,10 @@ namespace ProcessAndThread
     {
         public static void StartThreadWithNamedMethod()
         {
-            //A new Thread is created with a method(PrintMessage) as the entry point. thread.Start() begins execution on a new thread.
-            //Create a new thread and pass the method name as a parameter
-            //Once the method is completed, the thread will automatically end. 
-            //Sequence of execution of method can not predict.
+            // A new Thread is created with a method(PrintMessage) as the entry point. thread.Start() begins execution on a new thread.
+            // Create a new thread and pass the method name as a parameter
+            // Once the method is completed, the thread will automatically end. 
+            // Sequence of execution of method can not predict.
 
             Thread thread = new Thread(PrintMessage);
             thread.Name = "MyThread";
@@ -31,7 +31,7 @@ namespace ProcessAndThread
         }
         public static void StartThreadWithParameter()
         {
-            //ParameterizedThreadStart allows passing a single object parameter to the thread method. The method must accept an object parameter.
+            // ParameterizedThreadStart allows passing a single object parameter to the thread method. The method must accept an object parameter.
             Thread threadWithParameter = new Thread(PrintNumber);
             threadWithParameter.Start(45);
         }

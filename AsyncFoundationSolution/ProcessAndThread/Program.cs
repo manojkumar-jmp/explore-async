@@ -8,10 +8,13 @@ namespace ProcessAndThread
     {
         static void Main(string[] args)
         {
-            //By default, the main thread’s Name property is null unless you explicitly set it.
-            //•	The Name property can only be set once per thread.
+            // By default, the main thread’s Name property is null unless you explicitly set it.
+            // The Name property can only be set once per thread.
             Thread.CurrentThread.Name = "MainThread";
-            //Thread.CurrentThread.Name = "MainThread-1";
+            // Name can only be set once per thread
+            // This would throw an exception:
+            // Thread.CurrentThread.Name = "MainThread-1";
+
             // 1 LaunchAndCheckProcess();
             // 2 CheckThreads();
             // 3 ThreadingBasics.StartThreadWithNamedMethod();
@@ -21,7 +24,10 @@ namespace ProcessAndThread
             // 7 PrivateStacks.ThreadLocalStacks();
             // 8 SharedCodeSection.SharedCodeDemo();
             // 9 SharedDataSection.SharedDataDemo();
-            // 10 SharedOSResources.SharedOSResourcesDemo();
+            // 10 SharedDataSection.SharedDataDemoWithLock();
+            // 11 SharedDataSection.SharedDataDemoWithInterlocked();
+            // 12 SharedOSResources.SharedOSResourcesDemo();
+
 
             Console.WriteLine($"Thread Name: {Thread.CurrentThread.Name} Press any key to exit");
             Console.ReadKey();
@@ -57,6 +63,12 @@ namespace ProcessAndThread
                 Console.WriteLine("Thread in current process");
                 foreach (ProcessThread thread in process.Threads)
                 {
+                    // thread.Id is the unique identifier for the thread within the process.
+                    // thread.ThreadState indicates the current state of the thread (e.g., Running, Waiting, etc.)
+                    // thread.PriorityLevel indicates the priority of the thread (e.g., Normal, High, etc.)
+                    // thread.TotalProcessorTime indicates the total amount of time the thread has spent using the processor.
+                    // thread.UserProcessorTime indicates the amount of time the thread has spent executing user code.
+                    
                     Console.WriteLine($"Thread ID: {thread.Id} State: {thread.ThreadState} Priority {thread.PriorityLevel} CPU Time {thread.TotalProcessorTime}");
     
                 }
