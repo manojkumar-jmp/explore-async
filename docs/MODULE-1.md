@@ -125,9 +125,9 @@ These are exactly the kinds of problems modern .NET features like Task and async
 #### Race conditions
 A race condition occurs when two or more threads access shared data concurrently, and at least one thread modifies the data. The outcome depends on the exact timing and sequence of operations, leading to unpredictable results.
 #### Common Race Condition Patterns
-- Check-Then-Act: Checking a condition and then acting on it non-atomically
-- Read-Modify-Write: Reading a value, modifying it, and writing it back
-- Initialization Races: Multiple threads trying to initialize the same resource
+- Check-Then-Act: A thread checks a condition and then acts on it, but the check and the action are not performed atomically. Another thread can change the condition between the check and the act, leading to unexpected behavior.
+- Read-Modify-Write: A thread reads a value, modifies it, and writes it back. If multiple threads do this simultaneously, updates can be lost because the operations are not atomic. 
+- Initialization Races: Multiple threads try to initialize a shared resource at the same time, possibly resulting in multiple initializations or inconsistent state.
 
 #### Ways to Prevent Race Conditions:
 The key to avoiding race conditions is to identify shared resources and ensure their access is properly synchronized using appropriate thread-safety mechanisms.
