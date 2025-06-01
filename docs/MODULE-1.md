@@ -128,7 +128,7 @@ A race condition occurs when two or more threads access shared data concurrently
 - Check-Then-Act: A thread checks a condition and then acts on it, but the check and the action are not performed atomically. Another thread can change the condition between the check and the act, leading to unexpected behavior.
   > Refer to CheckThenAct.CheckThenActDemo()
 - Read-Modify-Write: A thread reads a value, modifies it, and writes it back. If multiple threads do this simultaneously, updates can be lost because the operations are not atomic.
-  > SharedDataSection.SharedDataDemo()
+  > Refer to SharedDataSection.SharedDataDemo()
 - Initialization Races: Multiple threads try to initialize a shared resource at the same time, possibly resulting in multiple initializations or inconsistent state.
   > Refer to InitializationRaces.InitializationRacesDemo()
 
