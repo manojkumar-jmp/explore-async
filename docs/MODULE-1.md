@@ -74,6 +74,39 @@ Finally, many enterprise systems still contain legacy code that uses manual thre
 
 > Refer to ThreadingBasics.StartThreadWithNamedMethod(), ThreadingBasics.StartThreadWithLamdada() and ThreadingBasics.StartThreadWithParameter()
 
+#### Why Notepad Has Fewer Threads Than Your Main Process
+
+- When you run the code that compares threads between your main program and Notepad, you'll typically see that Notepad has significantly fewer threads than your application. This is completely normal and expected for several reasons:
+
+**Why Your Main Application Has More Threads**
+- Your main application (especially in a .NET environment) creates many background threads because:
+1.	Runtime Infrastructure:
+    - The .NET runtime creates multiple thread pool threads
+    - Garbage collection threads
+    - Finalizer threads
+    - Just-In-Time (JIT) compilation threads
+2. Framework Services:
+   - Asynchronous I/O completion threads
+   - Timer management threads
+   - UI message loop (for WPF/Windows Forms apps)
+   - Background task threads
+3.	Application-Specific:
+    - Any Task.Run() or new Thread() operations in your code
+    - Async/await continuations
+    - Framework components that create their own threads
+
+**Why Notepad Has Fewer Threads**
+- Notepad is a much simpler application because:
+    - Native Application: Notepad is written in native code (C/C++), not managed code like .NET, so it doesn't need runtime infrastructure threads.
+    - Simple Architecture: Notepad has a minimal feature set with basic functionality.
+    - Single-Purpose Design: It focuses only on text editing without background services.
+    - Minimal Resource Usage: It's designed to be lightweight and efficient.
+
+A typical breakdown of threads in Notepad:
+ - Main UI thread
+ - File I/O thread
+ - Possibly 1-2 system service threads
+
 #### In .NET (and most operating systems), threads within the same process share
  - The code section (the program’s instructions)
    - All threads execute code from the same program. For example, multiple threads can call the same method:
