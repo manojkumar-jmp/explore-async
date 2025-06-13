@@ -1,4 +1,4 @@
-# Module 1: Foundation 
+# Module 1: Foundation update
 
 ## 1. Introduction to Multithreading
 - ### [What is a Thread?](#What-is-Thread)
