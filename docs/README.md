@@ -4,13 +4,13 @@ Welcome to this tutorial series on Multithreading, Asynchronous, and Parallel Pr
 
 ## [Module 1: Foundation](https://github.com/manojkumar-jmp/explore-async/blob/webpage/docs/MODULE-1.md)
 
-## [Module 2: Multithreading in Depth](MODULE-2.md)
+## [Module 2: Multithreading in Depth](https://github.com/manojkumar-jmp/explore-async/blob/webpage/docs/MODULE-2.md)
 
-## [Module 3: Asynchronous Programming (Async/Await)](MODULE-3.md)
+## [Module 3: Asynchronous Programming (Async/Await)](https://github.com/manojkumar-jmp/explore-async/blob/webpage/docs/MODULE-3.md)
 
-## [Module 4: Parallel Programming](MODULE-4.md)
+## [Module 4: Parallel Programming](https://github.com/manojkumar-jmp/explore-async/blob/webpage/docs/MODULE-4.md)
 
-## [Module 5: Practical Scenarios & Patterns](MODULE-5.md)
+## [Module 5: Practical Scenarios & Patterns](https://github.com/manojkumar-jmp/explore-async/blob/webpage/docs/MODULE-5.md)
 
-## [Optional Bonus Topics (Advanced)](MODULE-6.md)
+## [Optional Bonus Topics (Advanced)](https://github.com/manojkumar-jmp/explore-async/blob/webpage/docs/MODULE-6.md)
 
