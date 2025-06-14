@@ -22,7 +22,7 @@ This project demonstrates fundamental concepts of multithreading and process man
 ### Running the Project
 
 1. Clone the repository.
-2. Open the AsyncDemoSolution/AsyncDemoSolution.sln in Visual Studio.
+2. Open the [**AsyncDemoSolution/AsyncDemoSolution.sln**](AsyncDemoSolution/AsyncDemoSolution.sln) in Visual Studio.
 3. Set `ProcessAndThread` as the startup project.
 4. Build and run (`F5`).
 
