@@ -17,14 +17,15 @@ namespace Demo.Data.Json
         private readonly string _productFilePath = "DataFiles/products.json";
         public List<Product> GetProducts()
         {
-            if(!File.Exists(_productFilePath))
+            System.Threading.Thread.Sleep(5000); // 5 second artificial delay in data access.
+            if (!File.Exists(_productFilePath))
                 return new List<Product>();
             
             var json = File.ReadAllText(_productFilePath);
 
             return JsonConvert.DeserializeObject<List<Product>>(json) ?? new List<Product>();
             
-        }
+        }        
 
         public void AddProduct(Product product)
         {
