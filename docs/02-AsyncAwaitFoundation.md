@@ -9,16 +9,6 @@ This is a demo .NET Framework 4.8 WinForms application that demonstrates a layer
 - **Data Layer** (`JsonProductRepository`) simulates data access with artificial delays and stores data in a local JSON file.
 - **Contracts** define interfaces for loose coupling between layers.
 
-## Project Structure
-Demo.WinForms.UI/ Forms/ ProductList.cs         
-# Main product list form Demo.Business/ ProductService.cs        
-# Business logic with delay Contracts/ IProductService.cs     
-# Service interface Demo.Data.Json/ JsonProductRepository.cs 
-# Data access with delay Contracts/ IProductRepository.cs  
-# Repository interface Models/ Product.cs           
-# Product model DataFiles/ products.json            
-# Product data storage
-
 ## How It Works
 
 - The UI calls the business service to load products.
