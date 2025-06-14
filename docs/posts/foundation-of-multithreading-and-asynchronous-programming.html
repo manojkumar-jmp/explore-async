@@ -1,0 +1,314 @@
+<h1 id="module-1-foundation-update">Module 1: Foundation update</h1>
+<h2 id="1-introduction-to-multithreading">1. Introduction to Multithreading</h2>
+<ul>
+<li><h3 id="-what-is-a-thread-what-is-thread-"><a href="#What-is-Thread">What is a Thread?</a></h3>
+</li>
+<li><h3 id="-what-is-multithreading-what-is-multithreading-"><a href="#What-is-Multithreading">What is Multithreading?</a></h3>
+</li>
+<li><h3 id="-why-do-we-need-multithreading-why-do-we-need-multithreading-"><a href="#Why-Do-We-Need-Multithreading">Why Do We Need Multithreading?</a></h3>
+</li>
+<li><h3 id="-real-world-examples-real-world-examples-"><a href="#Real-World-Examples">Real-World Examples</a></h3>
+</li>
+</ul>
+<hr>
+<h2 id="2-introduction-to-concurrency-and-parallelism">2. Introduction to Concurrency and Parallelism</h2>
+<ul>
+<li><h3 id="why-use-multithreading-async-and-parallel-programming-">Why use multithreading, async, and parallel programming?</h3>
+</li>
+<li><h3 id="cpu-bound-vs-i-o-bound-tasks">CPU-bound vs I/O-bound tasks</h3>
+</li>
+<li><h3 id="common-pitfalls-deadlocks-race-conditions-etc-">Common pitfalls: deadlocks, race conditions, etc.</h3>
+</li>
+</ul>
+<hr>
+<h2 id="3-asynchronous-programming-models-in-net">3. Asynchronous Programming Models in .NET</h2>
+<ul>
+<li><h3 id="apm-asynchronous-programming-model">APM – Asynchronous Programming Model</h3>
+</li>
+<li><h3 id="eap-event-based-asynchronous-pattern">EAP – Event-based Asynchronous Pattern</h3>
+</li>
+<li><h3 id="tap-task-based-asynchronous-pattern">TAP – Task-based Asynchronous Pattern</h3>
+</li>
+</ul>
+<hr>
+<h2 id="-4-threading-basics-threading-basics-"><a href="#Threading-Basics">4. Threading Basics</a></h2>
+<ul>
+<li><h3 id="-thread-class-and-manual-thread-creation-thread-class-"><a href="#Thread-Class">Thread class and manual thread creation</a></h3>
+</li>
+<li><h3 id="-thread-lifecycle-naming-joining-sleeping-threadlifecycle-"><a href="#ThreadLifecycle">Thread lifecycle, naming, joining, sleeping</a></h3>
+</li>
+<li><h3 id="-common-challenges-in-multithreading-commonchallenges-"><a href="#CommonChallenges">Common Challenges in Multithreading</a></h3>
+</li>
+</ul>
+<hr>
+<h2 id="1-introduction-to-multithreading">1. Introduction to Multithreading</h2>
+<p><a name ="What-is-Thread"></a></p>
+<h3 id="what-is-a-thread-">What is a Thread?</h3>
+<p>Let’s begin with the basics: a thread is the smallest unit of execution within a process.
+When you launch an application, the operating system gives it a process with at least one thread — known as the main thread.
+Every line of code you write runs on some thread.
+Threads allow us to perform multiple operations at once — for example, updating the user interface while downloading a file in the background.</p>
+<p><a name="What-is-Multithreading"></a></p>
+<h3 id="what-is-multithreading-">What is Multithreading?</h3>
+<p>Multithreading means running two or more threads concurrently within the same application.
+It’s a way to achieve concurrency and parallelism — doing multiple things at once.</p>
+<p>For example, one thread might be waiting for data from the network while another continues processing data or responding to user input.</p>
+<p><a name="Why-Do-We-Need-Multithreading"></a>
+Why Do We Need Multithreading?
+So why use multithreading in the first place?
+Here are three main reasons:</p>
+<ul>
+<li><strong>Responsiveness</strong> – Especially in desktop and mobile apps, long-running operations on the main thread can freeze the UI. Running those tasks on background threads keeps your app responsive.</li>
+<li><strong>Performance</strong> – On multi-core CPUs, threads can execute in parallel, making better use of hardware.</li>
+<li><strong>Scalability</strong> – Servers can handle more simultaneous requests by running them across multiple threads efficiently.</li>
+</ul>
+<p><a name="Real-World-Examples"></a></p>
+<h3 id="real-world-examples">Real-World Examples</h3>
+<p>Let’s look at a few common places where multithreading is used:</p>
+<ul>
+<li>In a web server, to handle hundreds of incoming HTTP requests at the same time</li>
+<li>In a game engine, to load assets or process AI while rendering frames</li>
+<li>In a desktop or mobile app, to fetch data from the internet without freezing the UI</li>
+</ul>
+<p><a name="Threading-Basics"></a></p>
+<h2 id="4-threading-basics">4. Threading Basics</h2>
+<p>With the introduction of async/await and the Task Parallel Library (TPL), the need to manually create threads using the Thread class has become extremely rare in modern .NET applications. These higher-level abstractions provide more efficient, scalable, and safer ways to handle concurrency. In most scenarios, developers can rely on Task, Task.Run, async/await, or parallel constructs like Parallel.For to execute work concurrently, without ever needing to manually spin up threads.</p>
+<p>That said, threads are still the foundation of all concurrency in .NET. While you may not create threads directly in everyday development, understanding how they work is crucial. Modern constructs like Task, async/await, and the ThreadPool all rely on threads under the hood. Without understanding threads, it becomes difficult to fully grasp how concurrency works in .NET — such as what a Task actually does, how the ThreadPool schedules work, and why issues like deadlocks or race conditions occur.</p>
+<p>Moreover, having a solid understanding of threads significantly improves your ability to debug and troubleshoot real-world applications. When you&#39;re analyzing logs, you may encounter thread IDs or stack traces involving raw threads. Problems like deadlocks or race conditions often stem from shared state accessed across multiple threads. Knowing how threads behave helps you reason through and resolve these issues — even when working primarily with async/await.</p>
+<p>Finally, many enterprise systems still contain legacy code that uses manual threading constructs such as Thread.Start(), Thread.Sleep(), and Thread.Join(). If you&#39;re ever tasked with maintaining or migrating such applications, you&#39;ll need to understand how these raw threads work and why they were used. While the manual thread approach is no longer best practice for most modern development, it&#39;s still a vital piece of the concurrency puzzle — and a topic every .NET developer should understand.</p>
+<p><a name="Thread-Class"></a></p>
+<h3 id="thread-class">Thread Class</h3>
+<blockquote>
+<p>Refer to ThreadingBasics.StartThreadWithNamedMethod(), ThreadingBasics.StartThreadWithLamdada() and ThreadingBasics.StartThreadWithParameter()</p>
+</blockquote>
+<h4 id="why-notepad-has-fewer-threads-than-your-main-process">Why Notepad Has Fewer Threads Than Your Main Process</h4>
+<p>When you run the code that compares threads between your main program and Notepad, you&#39;ll typically see that Notepad has significantly fewer threads than your application. This is completely normal and expected for several reasons:</p>
+<p><strong>Why Your Main Application Has More Threads</strong>  \
+Your main application (especially in a .NET environment) creates many background threads because:</p>
+<ol>
+<li>Runtime Infrastructure:<ul>
+<li>The .NET runtime creates multiple thread pool threads</li>
+<li>Garbage collection threads</li>
+<li>Finalizer threads</li>
+<li>Just-In-Time (JIT) compilation threads</li>
+</ul>
+</li>
+<li>Framework Services:<ul>
+<li>Asynchronous I/O completion threads</li>
+<li>Timer management threads</li>
+<li>UI message loop (for WPF/Windows Forms apps)</li>
+<li>Background task threads</li>
+</ul>
+</li>
+<li>Application-Specific:<ul>
+<li>Any Task.Run() or new Thread() operations in your code</li>
+<li>Async/await continuations</li>
+<li>Framework components that create their own threads</li>
+</ul>
+</li>
+</ol>
+<p><strong>Why Notepad Has Fewer Threads</strong>  \
+Notepad is a much simpler application because:</p>
+<pre><code>- Native Application: Notepad <span class="hljs-keyword">is</span> written <span class="hljs-keyword">in</span> native code (C/C++), <span class="hljs-keyword">not</span> managed code like .NET, so <span class="hljs-keyword">it</span> doesn't need runtime infrastructure threads.
+- Simple Architecture: Notepad has a minimal feature <span class="hljs-keyword">set</span> <span class="hljs-keyword">with</span> basic functionality.
+- Single-Purpose Design: It focuses only <span class="hljs-keyword">on</span> <span class="hljs-built_in">text</span> editing <span class="hljs-keyword">without</span> background services.
+- Minimal Resource Usage: It's designed <span class="hljs-keyword">to</span> be lightweight <span class="hljs-keyword">and</span> efficient.
+</code></pre><p>A typical breakdown of threads in Notepad:</p>
+<ul>
+<li>Main UI thread</li>
+<li>File I/O thread</li>
+<li>Possibly 1-2 system service threads</li>
+</ul>
+<h4 id="in-net-and-most-operating-systems-threads-within-the-same-process-share">In .NET (and most operating systems), threads within the same process share</h4>
+<ul>
+<li>The code section (the program’s instructions)<ul>
+<li>All threads execute code from the same program. For example, multiple threads can call the same method:<blockquote>
+<p>Refer to SharedCodeSection.SharedCodeDemo()</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>The data section (static fields, heap objects)<ul>
+<li>Threads can access and modify shared data, such as static fields or objects on the heap:<blockquote>
+<p>Refer to SharedDataSection.SharedDataDemo()</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>Operating system resources (open files, handles, etc.)<ul>
+<li>Threads can use the same file handles or other OS resources<blockquote>
+<p>Refer to SharedOSResources.SharedOSResourcesDemo()</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>However, each thread has its own stack, so local variables are private to each thread.<ul>
+<li>Each thread has its own private stack, which means that local variables declared inside a method are unique to each thread. They are not shared between threads, so changes made to a local variable in one thread do not affect the same-named variable in another thread.<blockquote>
+<p>Refer to PrivateStacks.ThreadLocalStacks() </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Resource Type</th>
+<th>Shared Between Threads?</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code Section</td>
+<td>Yes</td>
+<td>Same method executed</td>
+</tr>
+<tr>
+<td>Data Section (static)</td>
+<td>Yes</td>
+<td>Static fields, heap objects</td>
+</tr>
+<tr>
+<td>OS Resources</td>
+<td>Yes</td>
+<td>File handles, sockets, etc.</td>
+</tr>
+<tr>
+<td>Stack (locals)</td>
+<td>No (private per thread)</td>
+<td>Local variables in methods</td>
+</tr>
+</tbody>
+</table>
+<p><a name="ThreadLifecycle"></a></p>
+<h3 id="thread-lifecycle-naming-joining-sleeping">Thread lifecycle, naming, joining, sleeping</h3>
+<blockquote>
+<p>Refer to ThreadLifecycle.ThreadLifecycleDemo()</p>
+</blockquote>
+<p>The thread lifecycle in .NET describes the various states a thread goes through from creation to termination. Here’s a summary of the main states and transitions, with C# context:</p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unstarted</td>
+<td>Created, not started</td>
+</tr>
+<tr>
+<td>Running</td>
+<td>Actively executing code</td>
+</tr>
+<tr>
+<td>WaitSleepJoin</td>
+<td>Thread is blocked (Waiting, sleeping, or joining another thread)</td>
+</tr>
+<tr>
+<td>Stopped</td>
+<td>Finished execution</td>
+</tr>
+</tbody>
+</table>
+<p>Suspended (Obsolete, not recommended)
+•    The thread is suspended. (Not used in modern .NET; avoid using Thread.Suspend.)</p>
+<p><a name="CommonChallenges"></a></p>
+<h3 id="common-challenges-in-multithreading">Common Challenges in Multithreading</h3>
+<p>While multithreading is powerful, it’s also notoriously tricky.
+Some common pitfalls include:</p>
+<ul>
+<li><strong>Race conditions</strong> – two threads accessing the same data at the same time</li>
+<li><strong>Deadlocks</strong> – two threads waiting on each other forever</li>
+<li><strong>Thread safety</strong> – protecting shared resources from concurrent access</li>
+<li><strong>Complex debugging</strong> – bugs may not appear consistently</li>
+</ul>
+<p>These are exactly the kinds of problems modern .NET features like Task and async/await are designed to help with — but to understand how, we first need to understand why.</p>
+<h4 id="race-conditions">Race conditions</h4>
+<p>A race condition occurs when two or more threads access shared data concurrently, and at least one thread modifies the data. The outcome depends on the exact timing and sequence of operations, leading to unpredictable results.</p>
+<h4 id="common-race-condition-patterns">Common Race Condition Patterns</h4>
+<ul>
+<li>Check-Then-Act: A thread checks a condition and then acts on it, but the check and the action are not performed atomically. Another thread can change the condition between the check and the act, leading to unexpected behavior.<blockquote>
+<p>Refer to CheckThenAct.CheckThenActDemo()</p>
+</blockquote>
+</li>
+<li>Read-Modify-Write: A thread reads a value, modifies it, and writes it back. If multiple threads do this simultaneously, updates can be lost because the operations are not atomic.<blockquote>
+<p>Refer to SharedDataSection.SharedDataDemo()</p>
+</blockquote>
+</li>
+<li>Initialization Races: Multiple threads try to initialize a shared resource at the same time, possibly resulting in multiple initializations or inconsistent state.<blockquote>
+<p>Refer to InitializationRaces.InitializationRacesDemo()</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="ways-to-prevent-race-conditions-">Ways to Prevent Race Conditions:</h4>
+<p>The key to avoiding race conditions is to identify shared resources and ensure their access is properly synchronized using appropriate thread-safety mechanisms.</p>
+<h5 id="a-synchronization-primitives-">A. Synchronization primitives:</h5>
+<ol>
+<li>Lock (uses Monitor under the hood)<ul>
+<li>The lock statement ensures that only one thread can enter the critical section at a time.</li>
+</ul>
+</li>
+<li>Monitor<ul>
+<li>Provides more control than lock, such as Monitor.Enter, Monitor.Exit, and Monitor.TryEnter.</li>
+<li>Allows explicit wait and pulse operations for advanced scenarios.</li>
+</ul>
+</li>
+<li>Mutex<ul>
+<li>Can synchronize threads across different processes</li>
+<li>Useful for inter-process synchronization</li>
+</ul>
+</li>
+<li>Semaphore / SemaphoreSlim<ul>
+<li>Limits the number of threads that can access a resource or pool of resources concurrently.</li>
+<li>SemaphoreSlim is a lightweight, in-process alternative.</li>
+</ul>
+</li>
+<li>ReaderWriterLock / ReaderWriterLockSlim<ul>
+<li>Allows multiple threads to read shared data simultaneously, but only one thread to write.</li>
+<li>ReaderWriterLockSlim is recommended for most scenarios.</li>
+</ul>
+</li>
+<li>AutoResetEvent / ManuakResetEvent<ul>
+<li>Used for signaling between threads.</li>
+<li>One thread can signal another to proceed.</li>
+</ul>
+</li>
+<li>CountdownEvent<ul>
+<li>Allows threads to wait until a set of operations being performed in other threads completes.</li>
+</ul>
+</li>
+<li>Barrier<ul>
+<li>Enables multiple threads to work concurrently on an algorithm in phases.</li>
+</ul>
+</li>
+<li>SpinLock / SpinWait<ul>
+<li>Useful for very short, low-contention critical sections where threads can &quot;spin&quot; instead of sleeping.</li>
+</ul>
+</li>
+</ol>
+<h5 id="b-atomic-operations-">B. Atomic operations:</h5>
+<ul>
+<li>Interlocked class methods</li>
+</ul>
+<h5 id="c-thread-safe-collections-">C. Thread-safe collections:</h5>
+<ul>
+<li>ConcurrentDictionary</li>
+<li>ConcurrentQueue</li>
+<li>ConcurrentBag</li>
+</ul>
+<h5 id="d-immutable-objects">D. Immutable objects</h5>
+<h5 id="e-thread-local-storage">E. Thread-local storage</h5>
+<h4 id="best-practices-">Best Practices:</h4>
+<ul>
+<li>Minimize shared state</li>
+<li>Make shared data immutable when possible</li>
+<li>Use thread-safe collections</li>
+<li>Keep critical sections as small as possible</li>
+<li>Avoid nested locks to prevent deadlocks</li>
+<li>Use higher-level synchronization when possible (Tasks, async/await)</li>
+</ul>
+<p><strong>Thread Safety</strong>  \
+Thread safety means that shared data is accessed and modified by multiple threads in a way that prevents data corruption or unexpected behavior. When multiple threads access the same variable or object without proper synchronization, you can get race conditions or inconsistent results.</p>
