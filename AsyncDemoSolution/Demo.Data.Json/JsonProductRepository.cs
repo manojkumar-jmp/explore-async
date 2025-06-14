@@ -1,23 +1,27 @@
-﻿using System;
+﻿using Demo.Data.Contracts;
+using Demo.Data.Contracts.Models;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Demo.Data.Contracts;
-using Demo.Data.Contracts.Models;
-using Newtonsoft.Json;
-
 
 namespace Demo.Data.Json
 {
+    /// <summary>
+    /// Provides methods to interact with product data stored in a JSON file.
+    /// </summary>
     public class JsonProductRepository : IProductRepository
     {
         private readonly string _productFilePath = "DataFiles/products.json";
+
+
+        /// <summary>
+        /// Retrieves all products from the JSON data file, simulating a data access delay.
+        /// </summary>
+        /// <returns>A list of <see cref="Product"/> objects.</returns>
         public List<Product> GetProducts()
         {
-            System.Threading.Thread.Sleep(5000); // 5 second artificial delay in data access.
+            SimulateDataProcessingDelay();
             if (!File.Exists(_productFilePath))
                 return new List<Product>();
             
@@ -25,8 +29,20 @@ namespace Demo.Data.Json
 
             return JsonConvert.DeserializeObject<List<Product>>(json) ?? new List<Product>();
             
-        }        
+        }
 
+        /// <summary>
+        /// Simulates a delay to represent data processing time.
+        /// </summary>
+        private void SimulateDataProcessingDelay()
+        {
+            System.Threading.Thread.Sleep(5000); // 5 second artificial delay in business logic processing.
+        }
+
+        /// <summary>
+        /// Adds a new product to the JSON data file.
+        /// </summary>
+        /// <param name="product">The <see cref="Product"/> to add.</param>
         public void AddProduct(Product product)
         {
             var products = GetProducts();
@@ -38,6 +54,10 @@ namespace Demo.Data.Json
 
         }
 
+        /// <summary>
+        /// Saves the list of products to the JSON data file.
+        /// </summary>
+        /// <param name="products">The list of <see cref="Product"/> objects to save.
         private void SaveProducts(List<Product> products)
         {
             var json = JsonConvert.SerializeObject(products, Formatting.Indented);
