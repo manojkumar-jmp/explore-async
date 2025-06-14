@@ -1,3 +1,3 @@
-## [ProcessAndThreadFoundation](docs/01-ProcessAndThreadFoundation.md)
+## [Process And Thread Foundation](docs/01-ProcessAndThreadFoundation.md)
 
-## [AsyncAwaitFoundation](docs/02-AsyncAwaitFoundation.md)
+## [Async Await Foundation](docs/02-AsyncAwaitFoundation.md)
