@@ -1,5 +1,4 @@
-## Project Description
+## Multithreading, Asynchronous, and Parallel Programming in C#
 
-* [live example](https://learning-zone.github.io/website-templates/startbootstrap-clean-blog-1.0.2)
-
-![alt text](https://github.com/learning-zone/website-templates/blob/master/assets/startbootstrap-clean-blog-1.0.2.png "startbootstrap-clean-blog-1.0.2")
+Tutorial series on Multithreading, Asynchronous, and Parallel Programming in C#. Learn to build responsive, scalable, high-performance apps with practical examples and clear explanations.
+[live](https://manojkumar-jmp.github.io/explore-async/)
