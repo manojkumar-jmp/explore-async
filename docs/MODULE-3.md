@@ -68,3 +68,17 @@
 - ### File I/O
 - ### HTTP calls using HttpClient
 - ### Database access with EF Core async
+
+---
+
+### The async and await Keywords
+
+The async keyword converts a method into an asynchronous one enabling the use of the await keyword inside the method body. Note that Task and Task<T>v are two awaitable types provided by .NET Core. An async method 
+returns a Task or Task<T> object and performs non-blocking operations. You must use the await keyword to call an async method
+
+### Some key features of the async keyword include: 
+- You can use the async keyword for methods, lambda expressions, and anonymous methods, but not for constructors or properties.
+- An async method should have a minimum of one await expression in its body. In an async method, you can have multiple await keywords to handle multiple non-blocking operations.
+- Methods that are async can be chained together.
+
+when the await keyword is used to invoke an asynchronous method, it pauses execution of the awaited method and asynchronously waits for the Task to complete while the currently executing thread is sent back to the thread pool in lieu of keeping it in a blocked state. It should be noted that the await keyword can be used only in an async method.
