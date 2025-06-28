@@ -12,13 +12,23 @@ namespace ProcessAndThread
             // Once the method is completed, the thread will automatically end. 
             // Sequence of execution of method can not predict.
 
-            Thread thread = new Thread(PrintMessage);
+            // you’ve only instantiated a Thread object.
+            // At this point it exists in the “Unstarted” (dormant) state—no OS thread has been scheduled yet.
+            Thread thread = new Thread(PrintMessage); 
             thread.Name = "MyThread";
             thread.Start();
 
             Thread threadWithDlegate = new Thread(new ThreadStart(PrintMessage));
             threadWithDlegate.Name = "MyThreadWithDelegate";
+
+            // tells the CLR to hand your Thread object off to the OS scheduler.
+            // The thread’s state transitions to “Running” as soon as the scheduler allocates CPU time to it.
             threadWithDlegate.Start();
+
+            // What Start() Actually Does
+            //   Enqueues your method(or lambda) onto a fresh OS thread.
+            //   Returns immediately—your calling thread and the new worker thread now run concurrently.
+            //   Throws a ThreadStateException if you call Start() more than once on the same instance.
         }
         public static void StartThreadWithLamdada()
         {
@@ -54,6 +64,9 @@ namespace ProcessAndThread
             Thread foregroundThread = new Thread(() =>
             {
                 Console.WriteLine("Foreground thread is running.");
+                // A call to the Thread.Sleep method puts the current execution context to sleep by invoking the sleep function of the OS kernel,
+                // allowing the CPU to continue to do other work.
+
                 Thread.Sleep(2000);
                 Console.WriteLine("Foreground thread is finishing.");
             });

@@ -45,7 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CheckThenAct.cs" />
+    <Compile Include="DeadlockExample.cs" />
+    <Compile Include="ExceptionHandling.cs" />
     <Compile Include="InitializationRaces.cs" />
+    <Compile Include="MyResource.cs" />
     <Compile Include="PrivateStacks.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +57,7 @@
     <Compile Include="SharedOSResources.cs" />
     <Compile Include="ThreadingBasics.cs" />
     <Compile Include="ThreadLifecycle.cs" />
+    <Compile Include="ThreadPool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -15,22 +15,29 @@ namespace ProcessAndThread
             // This would throw an exception:
             // Thread.CurrentThread.Name = "MainThread-1";
 
-            // 1 LaunchAndCheckProcess();
-            // 2 CheckThreads();
-            // 3 ThreadingBasics.StartThreadWithNamedMethod();
-            // 4 ThreadingBasics.StartThreadWithLamdada();
-            // 5 ThreadingBasics.StartThreadWithParameter();
-            // 6 ThreadLifecycle.ThreadLifecycleDemo();
-            // 7 PrivateStacks.ThreadLocalStacks();
-            // 8 SharedCodeSection.SharedCodeDemo();
-            // 9 SharedDataSection.SharedDataDemo();
-            // 10 SharedDataSection.SharedDataDemoWithLock();
-            // 11 SharedDataSection.SharedDataDemoWithInterlocked();
-            // 12 SharedOSResources.SharedOSResourcesDemo();
-            // 13 CheckThenAct.CheckThenActDemo();
-            // 13 InitializationRaces.InitializationRacesDemo();
-
-            InitializationRaces.InitializationRacesDemo();
+            // LaunchAndCheckProcess();
+            // CheckThreads();
+            // ThreadingBasics.StartThreadWithNamedMethod();
+            // ThreadingBasics.StartThreadWithLamdada();
+            // ThreadingBasics.StartThreadWithParameter();
+            // ThreadPool.ThreadPoolDemo();
+            // DeadlockExample.DeadlockExampleDemo();
+            // DeadlockExample.AvoidingCiscularDependenciesDemo();
+            // DeadlockExample.MonitorAvoidDeadlockDemo();
+            // ThreadLifecycle.ThreadLifecycleDemo();
+            // PrivateStacks.ThreadLocalStacks();
+            // SharedCodeSection.SharedCodeDemo();
+            // SharedDataSection.SharedDataDemo();
+            // SharedDataSection.SharedDataDemoWithLock();
+            // SharedDataSection.SharedDataDemoWithInterlocked();
+            // SharedOSResources.SharedOSResourcesDemo();
+            // CheckThenAct.CheckThenActDemo();
+            // InitializationRaces.InitializationRacesDemo();
+            // InitializationRaces.InitializationRacesDemo();
+            // ExceptionHandling.ExceptionHandlingDemo();
+            // ExceptionHandling.CaughtNonThreadedMethodException();
+            // ExceptionHandling.DemonstrateThreadExceptionNotPropagating();
+             ExceptionHandling.DemonstrateThreadExceptionUnhandledException();
 
             Console.WriteLine($"Thread Name: {Thread.CurrentThread.Name} Press any key to exit");
             Console.ReadKey();
