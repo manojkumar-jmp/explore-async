@@ -141,8 +141,12 @@ The thread lifecycle in .NET describes the various states a thread goes through 
 | WaitSleepJoin    | Thread is blocked (Waiting, sleeping, or joining another thread)     | 
 | Stopped          | Finished execution                                                   |
 
-Suspended (Obsolete, not recommended)
-•	The thread is suspended. (Not used in modern .NET; avoid using Thread.Suspend.)
+**Suspended (Obsolete, not recommended)**
+ - In C#, a thread can be suspended or resumed using the deprecated methods Suspend and Resume. These methods are deprecated and their use is discouraged in .NET Framework and .NET Core. This is because if you suspend a thread that’s already inside a critical section where it’s holding a lock on a critical resource, the entire application might deadlock. A better way to handle this is by using WaitHandle.
+ - WaitHandlers help threads communicate with one another using signaling where a particular thread waits until it receives a notification from another thread. In C#, you can have two types that represent EventWaitHandlers, **AutoResetEvent** and **ManualResetEvent**. The basic difference between an AutoResetEvent and a ManualResetEvent is that an AutoResetEvent only allows one waiting thread to continue, and a ManualResetEvent allows multiple threads to continue until you stop it. 
+
+**Terminating a Thread**
+    - The Thread.Abort() method can be used to abort a running thread.  However, this isn’t a recommended approach and has been deprecated in .NET Core because it adopts an unsafe approach to terminating threads. A recommended approach to thread termination is by using CancellationToken, 
 
 <a name="CommonChallenges"></a>
 ### Common Challenges in Multithreading
